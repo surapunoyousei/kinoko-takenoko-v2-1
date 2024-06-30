@@ -1,3 +1,5 @@
+
+import re
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
@@ -29,6 +31,9 @@ def answer():
     html_messeages = ""
     for i in range(len(messeages)):
         messeage = messeages[i]
+        messeage = re.sub(r'&', r'&amp;', messeage)
+        messeage = re.sub(r'<', r'&lt;', messeage)
+        messeage = re.sub(r'>', r'&gt;', messeage)
         html_messeages += '<div class="alert {1}" role="alert"> {0} </div>'.format(
             messeage, "alert-warning ms-5" if i % 2 == 0 else "alert-success me-5"
         )
