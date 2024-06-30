@@ -34,6 +34,7 @@ def answer():
         messeage = re.sub(r'&', r'&amp;', messeage)
         messeage = re.sub(r'<', r'&lt;', messeage)
         messeage = re.sub(r'>', r'&gt;', messeage)
+        messeage = re.sub(r"(\d{2,3})-\d+-\d+", r"\1-****-****", messeage)
         html_messeages += '<div class="alert {1}" role="alert"> {0} </div>'.format(
             messeage, "alert-warning ms-5" if i % 2 == 0 else "alert-success me-5"
         )
