@@ -29,8 +29,9 @@ def answer():
     html_messeages = ""
     for i in range(len(messeages)):
         messeage = messeages[i]
-        messeage_html = f'<div class="alert alert-warning ms-5" role="alert"> {messeage} </div>'
-        html_messeages += messeage_html
+        html_messeages += '<div class="alert {1}" role="alert"> {0} </div>'.format(
+            messeage, "alert-warning ms-5" if i % 2 == 0 else "alert-success me-5"
+        )
 
     kinoko_percent = (kinoko_count / (kinoko_count + takenoko_count)) * 100
     takenoko_percent = (takenoko_count / (kinoko_count + takenoko_count)) * 100
